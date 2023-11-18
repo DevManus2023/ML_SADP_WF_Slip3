@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Login Form</h2>
+
+<form id="loginForm" onsubmit="validateForm(event)">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <span id="emailError" class="error"></span><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <input type="submit" value="Login">
+</form>
+
+<script>
+    function validateForm(event) {
+        // Prevent the form from submitting
+        event.preventDefault();
+
+        // Get form values
+        var email = document.getElementById('email').value;
+
+        // Regular expression for validating email
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Check if the email is valid
+        if (!emailRegex.test(email)) {
+            document.getElementById('emailError').innerHTML = 'Invalid email address';
+            return;
+        } else {
+            document.getElementById('emailError').innerHTML = '';
+        }
+
+        // If email is valid, you can perform further actions (e.g., submit the form)
+        alert('Login successful!');
+        // You can uncomment the following line to allow form submission
+        // document.getElementById('loginForm').submit();
+    }
+</script>
+
+</body>
+</html>
